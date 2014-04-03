@@ -1,0 +1,11 @@
+INTRA_sem_e: INTRA_sem.o sem_functions.o p11_sem.o
+	gcc -o INTRA_sem_e INTRA_sem.o sem_functions.o p11_sem.o -lpthread -g
+INTRA_sem.o: INTRA_sem.c local_mutex.h sem_functions.h
+	gcc -o INTRA_sem.o -c INTRA_sem.c -lpthread -g
+p11_sem.o: p11_sem.c local_mutex.h sem_functions.h
+	gcc -o p11_sem.o -c p11_sem.c -lpthread -g
+sem_functions.o: sem_functions.c sem_functions.h
+	gcc -o sem_functions.o -c sem_functions.c -lpthread -g
+clean:
+	rm -rf *.o INTRA_sem_e
+
